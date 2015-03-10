@@ -1,7 +1,7 @@
 package hendrix.my.client;
 
 import java.io.IOException;
-import java.net.ServerSocket;
+import java.util.HashMap;
 
 
 
@@ -9,6 +9,7 @@ public class Starter {
     private static final int DEFAULT_IN_PORT = 8888;
     private static final int DEFAULT_OUT_PORT = 8889;
     
+    HashMap<String,Integer> userList = new HashMap<String,Integer>();
 
     public static void main (String args[]) throws IOException{
 	int in_port, out_port;
