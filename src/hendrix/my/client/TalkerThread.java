@@ -12,11 +12,11 @@ public class TalkerThread extends Thread {
 	private ArrayBlockingQueue<String> channel;
 	private boolean going;
 	
-	public TalkerThread(String msg, Socket s) {
+	public TalkerThread(String msg, String host, int port) {
 		this.msg = msg.endsWith("\n") ? msg : msg + "\n";
 		this.host = host;
 		this.port = port;
-		this.channel = channel;
+		
 		going = true;
 	}
 	
@@ -26,9 +26,9 @@ public class TalkerThread extends Thread {
 
 	@Override
 	public void run() {
-		
+		Socket s = null;
 		try {
-			
+			s = new Socket(host,port);
 			PrintWriter writer = new PrintWriter(s.getOutputStream());
 			writer.print(msg);
 			writer.flush();
